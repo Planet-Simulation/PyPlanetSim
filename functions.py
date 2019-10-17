@@ -24,7 +24,7 @@ def slant(n,m):
 
 
 def heat(inclination,temperature_field,sun_h):
-	new_temperature_field = matrix_generator(len(inclination),len(inclination[0]))
+	new_temperature_field = generate_matrix(len(inclination),len(inclination[0]))
 	for i in range(0,len(inclination)):
 		for k in range(0,len(inclination[0])):
 			sun_heat = cos(radians(inclination[i][k]))*sun_h
