@@ -1,13 +1,6 @@
 from math import cos, radians
 
-def generate_matrix(y,x,a):
-	matrix = []
-	for i in range(0,y):
-		row = []
-		for k in range(0,x):
-			row.append(a)
-		matrix.append(row)
-	return matrix
+generate_matrix = lambda x,y,a: [[a for x in range(x)] for i in range(y)]
 
 def slant(n,m):
 	inclination = []
