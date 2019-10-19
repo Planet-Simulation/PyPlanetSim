@@ -1,6 +1,13 @@
 from math import cos, radians
 
-generate_matrix = lambda y,x,a: [[a for x in range(x)] for i in range(y)]
+def generate_matrix(y,x,a):
+	matrix = []
+	for i in range(0,y):
+		row = []
+		for k in range(0,x):
+			row.append(a)
+		matrix.append(row)
+	return matrix
 
 def slant(n,m):
 	inclination = []
@@ -12,16 +19,14 @@ def slant(n,m):
 		for i in range(0,m): row_n.append(c_angle)
 		inclination.append(row_n)
 		inclination.insert(0,row_n)
-
 	return inclination
 
 
-def heat(inclination,temperature_field,sun_h):
-	new_temperature_field = generate_matrix(len(inclination),len(inclination[0]))
+def heat(inclination,temperature_field,sun_h,colours):
+	new_temperature_field = matrix_generator(len(inclination),len(inclination[0]))
 	for i in range(0,len(inclination)):
 		for k in range(0,len(inclination[0])):
-			sun_heat = cos(radians(inclination[i][k]))*sun_h
-			new_temperature_field[i][k] = (sun_heat+temperature_field[i][k])/2
-
+			sun_heat = (cos(radians(inclination[i][k]))*sun_h*colours[i][k])
+			new_temperature_field[i][k] = 0.4*(sun_heat+temperature_field[i][k])+neightboor*0.2#(sun_heat+temperature_field[i][k])/2
 	return new_temperature_field
 
